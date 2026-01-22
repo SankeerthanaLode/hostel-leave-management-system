@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warden Registration | Hostel Leave System</title>
+
+  <!-- INTERNAL CSS -->
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 420px;
+      margin: 60px auto;
+      background: #ffffff;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+    }
+
+    .header {
+      background: #0d3b66;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .form-box {
+      padding: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #0d3b66;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 10px;
+      background: #0d3b66;
+      color: white;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #092c4c;
+    }
+  </style>
+
+  <!-- INTERNAL JAVASCRIPT VALIDATION -->
+  <script>
+    function validateWarden() {
+
+      var mobile = document.getElementById("mobile").value;
+      var password = document.getElementById("password").value;
+
+      var mobilePattern = /^[0-9]{10}$/;
+
+      if (!mobilePattern.test(mobile)) {
+        alert("Mobile number must be exactly 10 digits.");
+        return false;
+      }
+
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+
+      alert("Warden Registration Successful!");
+      return false; // change to true when backend is added
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header">
+      Warden Registration
+    </div>
+
+    <div class="form-box">
+      <form onsubmit="return validateWarden()">
+
+        <label>Full Name</label>
+        <input type="text" required>
+
+        <label>Employee ID</label>
+        <input type="text" pattern="[A-Za-z0-9]+" required>
+
+        <label>Hostel Managed</label>
+        <select required>
+          <option value="">-- Select Hostel --</option>
+          <option>Boys Hostel</option>
+          <option>Girls Hostel</option>
+        </select>
+
+        <label>Mobile Number</label>
+        <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+
+        <label>Email ID</label>
+        <input type="email" required>
+
+        <label>Password</label>
+        <input type="password" id="password" minlength="6" required>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
