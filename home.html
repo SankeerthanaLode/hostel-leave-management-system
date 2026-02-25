@@ -3,7 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <title>Hostel Leave Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+/* Smooth transitions globally */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* ================= Banner ================= */
+
+.banner {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 18px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1e3c72;
+}
+
+/* ================= Buttons ================= */
+
+.btn {
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #1e3c72;
+    color: #1e3c72;
+    background: transparent;
+}
+
+.btn:hover {
+    background: #1e3c72;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ================= Hero Section ================= */
+
+.hero {
+    padding: 90px 20px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.hero h1 {
+    font-size: 38px;
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #555;
+    max-width: 750px;
+    margin: auto;
+}
+
+/* ================= Features ================= */
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 70px 20px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #eee;
+    padding: 30px;
+    width: 280px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ================= Register Section ================= */
+
+.register-options {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.register-options h2 {
+    font-size: 28px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.register-options p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.role-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    text-decoration: none;
+    background: white;
+    border: 1px solid #eee;
+    padding: 35px 25px;
+    width: 280px;
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    transition: 0.3s ease;
+}
+
+.role-card:hover {
+    border-color: #1e3c72;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transform: translateY(-5px);
+}
+
+.role-card h3 {
+    font-size: 18px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.role-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ================= Footer ================= */
+
+footer {
+    border-top: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 18px;
+    font-size: 13px;
+    color: #777;
+    background: #ffffff;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .features {
+        padding: 50px 20px;
+    }
+
+    .register-options {
+        padding: 60px 20px;
+    }
+}
+    </style>
 </head>
 <body>
 

@@ -83,29 +83,70 @@
   <script>
     function validateForm() {
 
-      var studentMobile = document.getElementById("studentMobile").value;
-      var parentMobile  = document.getElementById("parentMobile").value;
-      var password      = document.getElementById("password").value;
+      var fullName       = document.querySelector("input[type='text']").value.trim();
+      var rollNumber     = document.querySelectorAll("input[type='text']")[1].value.trim();
+      var department     = document.querySelectorAll("input[type='text']")[2].value.trim();
+      var hostelType     = document.querySelector("select").value;
+      var studentMobile  = document.getElementById("studentMobile").value.trim();
+      var parentMobile   = document.getElementById("parentMobile").value.trim();
+      var email          = document.querySelector("input[type='email']").value.trim();
+      var password       = document.getElementById("password").value;
 
-      var mobilePattern = /^[0-9]{10}$/;
+      var namePattern    = /^[A-Za-z ]+$/;
+      var rollPattern    = /^[A-Za-z0-9]+$/;
+      var mobilePattern  = /^[0-9]{10}$/;
+      var emailPattern   = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
+      // Full Name validation
+      if (!namePattern.test(fullName)) {
+        alert("Full Name should contain only letters and spaces.");
+        return false;
+      }
+
+      // Roll Number validation
+      if (!rollPattern.test(rollNumber)) {
+        alert("Roll Number should contain only letters and numbers.");
+        return false;
+      }
+
+      // Department validation
+      if (department.length < 2) {
+        alert("Please enter a valid Department name.");
+        return false;
+      }
+
+      // Hostel selection validation
+      if (hostelType === "") {
+        alert("Please select a Hostel Type.");
+        return false;
+      }
+
+      // Student Mobile validation
       if (!mobilePattern.test(studentMobile)) {
-        alert("Student mobile number must be 10 digits.");
+        alert("Student mobile number must be exactly 10 digits.");
         return false;
       }
 
+      // Parent Mobile validation
       if (!mobilePattern.test(parentMobile)) {
-        alert("Parent mobile number must be 10 digits.");
+        alert("Parent mobile number must be exactly 10 digits.");
         return false;
       }
 
+      // Email validation
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid Email ID.");
+        return false;
+      }
+
+      // Password validation
       if (password.length < 6) {
         alert("Password must be at least 6 characters long.");
         return false;
       }
 
       alert("Student Registration Successful!");
-      return false; // change to true when backend is connected
+      return false; // Change to true when backend is connected
     }
   </script>
 </head>
@@ -148,7 +189,9 @@
         <label>Password</label>
         <input type="password" id="password" minlength="6" required>
 
-        <button type="submit">Register</button>
+         <a href="studentDashboard.html">
+                <button type="button">Login</button>
+            </a>
       </form>
     </div>
   </div>

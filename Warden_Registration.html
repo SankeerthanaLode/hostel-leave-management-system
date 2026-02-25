@@ -78,23 +78,56 @@
   <script>
     function validateWarden() {
 
-      var mobile = document.getElementById("mobile").value;
-      var password = document.getElementById("password").value;
+      var fullName   = document.querySelector("input[type='text']").value.trim();
+      var employeeID = document.querySelectorAll("input[type='text']")[1].value.trim();
+      var hostel     = document.querySelector("select").value;
+      var mobile     = document.getElementById("mobile").value.trim();
+      var email      = document.querySelector("input[type='email']").value.trim();
+      var password   = document.getElementById("password").value;
 
-      var mobilePattern = /^[0-9]{10}$/;
+      var namePattern     = /^[A-Za-z ]+$/;
+      var employeePattern = /^[A-Za-z0-9]+$/;
+      var mobilePattern   = /^[0-9]{10}$/;
+      var emailPattern    = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
+      // Full Name validation
+      if (!namePattern.test(fullName)) {
+        alert("Full Name should contain only letters and spaces.");
+        return false;
+      }
+
+      // Employee ID validation
+      if (!employeePattern.test(employeeID)) {
+        alert("Employee ID should contain only letters and numbers.");
+        return false;
+      }
+
+      // Hostel selection validation
+      if (hostel === "") {
+        alert("Please select the hostel managed.");
+        return false;
+      }
+
+      // Mobile validation
       if (!mobilePattern.test(mobile)) {
         alert("Mobile number must be exactly 10 digits.");
         return false;
       }
 
+      // Email validation
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid Email ID.");
+        return false;
+      }
+
+      // Password validation
       if (password.length < 6) {
         alert("Password must be at least 6 characters long.");
         return false;
       }
 
       alert("Warden Registration Successful!");
-      return false; // change to true when backend is added
+      return false; // Change to true when backend is added
     }
   </script>
 </head>
@@ -131,7 +164,7 @@
         <label>Password</label>
         <input type="password" id="password" minlength="6" required>
 
-        <button type="submit">Register</button>
+        <a href="wardenDashboard.html"><button type="button">Login</button></a>
       </form>
     </div>
   </div>

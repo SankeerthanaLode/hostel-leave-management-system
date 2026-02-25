@@ -78,18 +78,46 @@
   <script>
     function validateCaretaker() {
 
-      var mobile = document.getElementById("mobile").value;
-      var password = document.getElementById("password").value;
+      var name = document.querySelector("input[type='text']").value.trim();
+      var employeeId = document.querySelectorAll("input[type='text']")[1].value.trim();
+      var hostel = document.querySelector("select").value;
+      var mobile = document.getElementById("mobile").value.trim();
+      var email = document.querySelector("input[type='email']").value.trim();
+      var password = document.getElementById("password").value.trim();
 
+      var namePattern = /^[A-Za-z ]+$/;
+      var employeePattern = /^[A-Za-z0-9]+$/;
       var mobilePattern = /^[0-9]{10}$/;
+      var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      var strongPassword = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+
+      if (!namePattern.test(name)) {
+        alert("Full Name should contain only letters.");
+        return false;
+      }
+
+      if (!employeePattern.test(employeeId)) {
+        alert("Employee ID should contain only letters and numbers.");
+        return false;
+      }
+
+      if (hostel === "") {
+        alert("Please select assigned hostel.");
+        return false;
+      }
 
       if (!mobilePattern.test(mobile)) {
         alert("Mobile number must be exactly 10 digits.");
         return false;
       }
 
-      if (password.length < 6) {
-        alert("Password must be at least 6 characters long.");
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      if (!strongPassword.test(password)) {
+        alert("Password must be at least 6 characters and contain at least one letter and one number.");
         return false;
       }
 
@@ -131,7 +159,8 @@
         <label>Password</label>
         <input type="password" id="password" minlength="6" required>
 
-        <button type="submit">Register</button>
+        <a href="caretakerDashboard.html"><button type="button">Login</button></a>
+
       </form>
     </div>
   </div>

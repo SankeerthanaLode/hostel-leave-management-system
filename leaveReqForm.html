@@ -4,7 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leave Request</title>
-    <link rel="stylesheet" href="styleStudent.css">
+    <style>
+        /* ---- Your Existing CSS (Unchanged) ---- */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f2f4f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #1f4ed8;
+        }
+
+        .form-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .half-width {
+            flex: 1;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #1f4ed8;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #173db3;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+    <!-- JAVASCRIPT VALIDATION -->
+    <script>
+        window.onload = function () {
+            document.querySelector(".form-box").onsubmit = function () {
+
+                var fromDate = document.querySelectorAll("input[type='date']")[0].value;
+                var toDate   = document.querySelectorAll("input[type='date']")[1].value;
+                var year     = document.querySelectorAll("select")[0].value;
+                var block    = document.querySelectorAll("select")[1].value;
+                var room     = document.querySelector("input[type='text']").value.trim();
+                var reason   = document.querySelector("textarea").value.trim();
+
+                var roomPattern = /^[A-Za-z0-9]+$/;
+
+                // From Date validation
+                if (fromDate === "") {
+                    alert("Please select From Date.");
+                    return false;
+                }
+
+                // To Date validation
+                if (toDate === "") {
+                    alert("Please select To Date.");
+                    return false;
+                }
+
+                // Date comparison validation
+                if (new Date(toDate) < new Date(fromDate)) {
+                    alert("To Date cannot be earlier than From Date.");
+                    return false;
+                }
+
+                // Year validation
+                if (year === "Select Year") {
+                    alert("Please select your Year.");
+                    return false;
+                }
+
+                // Block validation
+                if (block === "Select Block") {
+                    alert("Please select your Block.");
+                    return false;
+                }
+
+                // Room validation
+                if (!roomPattern.test(room)) {
+                    alert("Room Number should contain only letters and numbers.");
+                    return false;
+                }
+
+                // Reason validation
+                if (reason.length < 5) {
+                    alert("Reason must be at least 5 characters long.");
+                    return false;
+                }
+
+                alert("Leave Request Submitted Successfully!");
+                return false; // Change to true when backend is connected
+            };
+        };
+    </script>
 </head>
 <body>
 
@@ -23,7 +163,6 @@
             <input type="date">
         </div>
 
-        <!-- Year and Block Side by Side -->
         <div class="form-row">
             <div class="form-group half-width">
                 <label>Year</label>

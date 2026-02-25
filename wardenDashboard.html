@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warden Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .tagline {
+            margin-top: 8px;
+            margin-bottom: 40px;
+            color: #6b7280;
+        }
+
+        .card-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+        }
+
+        .logout {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .logout:hover {
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <h1 class="title">Warden Dashboard</h1>
+    <p class="tagline">Oversee hostel leave approvals & reports</p>
+
+    <div class="card-wrapper">
+
+        <a href="wardenPending.html" class="card">
+            <h2>Pending Approvals</h2>
+            <p>Review leave requests approved by caretaker</p>
+        </a>
+
+        <a href="wardenFinalDecision.html" class="card">
+            <h2>Final Approvals</h2>
+            <p>Approve or reject leave requests</p>
+        </a>
+
+        <a href="wardenReports.html" class="card">
+            <h2>Leave Reports</h2>
+            <p>View student leave statistics and history</p>
+        </a>
+
+    </div>
+
+    <a href="home.html" class="logout">Logout</a>
+
+</div>
+
+</body>
+</html>
