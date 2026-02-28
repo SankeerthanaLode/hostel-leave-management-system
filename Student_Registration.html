@@ -159,19 +159,19 @@
     </div>
 
     <div class="form-box">
-      <form onsubmit="return validateForm()">
+      <form onsubmit="return handleSubmit(event)">
 
         <label>Full Name</label>
-        <input type="text" required>
+        <input type="text" id="full_name" required>
 
         <label>Roll Number</label>
-        <input type="text" pattern="[A-Za-z0-9]+" required>
+        <input type="text" pattern="[A-Za-z0-9]+" id="roll_number">
 
         <label>Department</label>
-        <input type="text" required>
+        <input type="text" id="department" required>
 
         <label>Hostel Type</label>
-        <select required>
+        <select id="hostel_type" required>
           <option value="">-- Select Hostel --</option>
           <option>Boys Hostel</option>
           <option>Girls Hostel</option>
@@ -195,6 +195,58 @@
       </form>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 
+<!-- 2️⃣ Supabase Initialization -->
+<script>
+const supabaseUrl = "YOUR_PROJECT_URL";
+const supabaseKey = "YOUR_ANON_PUBLIC_KEY";
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+</script>
+
+<!-- 3️⃣ Your handleSubmit function -->
+<script>
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  if (!validateForm()) {
+    return false;
+  }
+
+  const full_name = document.getElementById("full_name").value;
+  const roll_number = document.getElementById("roll_number").value;
+  const department = document.getElementById("department").value;
+  const hostel_type = document.getElementById("hostel_type").value;
+  const student_mobile = document.getElementById("student_mobile").value;
+  const parent_mobile = document.getElementById("parent_mobile").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { error } = await supabase
+    .from('students')
+    .insert([
+      { 
+        full_name,
+        roll_number,
+        department,
+        hostel_type,
+        student_mobile,
+        parent_mobile,
+        email,
+        password
+      }
+    ]);
+
+  if (error) {
+    alert(error.message);
+  } else {
+    alert("Registration Successful!");
+    window.location.href = "loginStudent.html";
+  }
+
+  return false;
+}
+</script>
 </body>
 </html>
