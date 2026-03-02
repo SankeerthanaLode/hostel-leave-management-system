@@ -90,6 +90,15 @@
 
 <body>
 
+<!-- Protection script: runs before page loads -->
+<script>
+    const user = sessionStorage.getItem('loggedInUser');
+    if (!user) {
+        alert("You must login first!");
+        window.location.href = "loginWarden.html";
+    }
+</script>
+
 <div class="dashboard-container">
 
     <h1 class="title">Warden Dashboard</h1>
@@ -114,11 +123,12 @@
 
     </div>
 
-    <a href="home.html" class="logout">Logout</a>
+    <a href="home.html" class="logout" onclick="sessionStorage.removeItem('loggedInUser')">Logout</a>
 
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
-    <script src="supabaseClient.js"></script>
+<script src="supabaseClient.js"></script>
 </body>
 </html>
